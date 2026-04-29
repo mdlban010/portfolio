@@ -1,4 +1,6 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 
 :root {
   --bg: #faf9f7;
@@ -117,88 +119,41 @@ nav {
   transition: border-color 0.15s, color 0.15s, background 0.15s;
 }
 
+.link-pill i,
+.link-pill::before {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.5rem;
+}
+/* icon for cv feature */
+.link-pill--cv::before {
+  font-family: "Font Awesome 6 Free";
+  content: "\f15b"; /* file icon */
+  font-weight: 900;
+}
+/* icon for linkedin feature */
+.link-pill--linkedin::before {
+  font-family: "Font Awesome 6 Brands";
+  content: "\f08c"; /* LinkedIn icon */
+  font-weight: 400;
+}
+/* icon for github feature */
+.link-pill--github::before {
+  font-family: "Font Awesome 6 Brands";
+  content: "\f09b"; /* GitHub icon */
+  font-weight: 400;
+}
+/* icon for email feature */
+.link-pill--email::before {
+  font-family: "Font Awesome 6 Free";
+  content: "\f0e0";
+  font-weight: 400;
+}
+
 .link-pill:hover {
   border-color: var(--accent);
   color: var(--accent);
   background: var(--accent-light);
-}
-
-/* ─── PHOTOS (home) ─────────────────────────────────── */
-.photos-section {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 0 2rem 5rem;
-}
-
-.photos-label {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--muted);
-  font-weight: 500;
-  margin-bottom: 1.25rem;
-}
-
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-
-@media (min-width: 520px) {
-  .photo-grid { grid-template-columns: repeat(4, 1fr); }
-}
-
-.photo-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 6px;
-  aspect-ratio: 3/4;
-  cursor: pointer;
-}
-
-.photo-item img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.photo-item:hover img { transform: scale(1.04); }
-
-.photo-placeholder {
-  width: 100%; height: 100%;
-}
-
-.ph-1 .photo-placeholder { background: #c8d5c0; }
-.ph-2 .photo-placeholder { background: #b5ccd4; }
-.ph-3 .photo-placeholder { background: #d4c8b0; }
-.ph-4 .photo-placeholder { background: #c4b8d4; }
-
-.photo-caption {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 28px 10px 10px;
-  background: linear-gradient(transparent, rgba(0,0,0,0.55));
-  opacity: 0;
-  transition: opacity 0.25s;
-}
-
-.photo-item:hover .photo-caption { opacity: 1; }
-
-.photo-caption-name {
-  display: block;
-  font-size: 11px;
-  color: rgba(255,255,255,0.95);
-  font-weight: 500;
-  line-height: 1.3;
-}
-
-.photo-caption-loc {
-  display: block;
-  font-size: 10px;
-  color: rgba(255,255,255,0.7);
-  margin-top: 1px;
 }
 
 /* ─── CONTENT SECTION (career / blog) ───────────────── */
@@ -372,6 +327,4 @@ footer {
 .hero-name    { animation: fadeUp 0.6s ease both; }
 .hero-bio     { animation: fadeUp 0.6s 0.08s ease both; }
 .links-row    { animation: fadeUp 0.6s 0.16s ease both; }
-.photos-label { animation: fadeUp 0.6s 0.24s ease both; }
-.photo-grid   { animation: fadeUp 0.6s 0.28s ease both; }
 .content-section { animation: fadeUp 0.6s 0.1s ease both; }
