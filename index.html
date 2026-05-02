@@ -17,6 +17,9 @@
     <li><a href="career.html">Career</a></li>
     <li><a href="blog.html">Blog</a></li>
   </ul>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="link-pill link-pill--theme" type="button" aria-label="Toggle theme"></button>
+  </div>
 </nav>
 
 <main>
@@ -25,19 +28,14 @@
       <img src="docs/images/masondo_profile_pic.png" alt="Siphamandla Masondo">
     </div>
     <h1 class="hero-name">Siphamandla Masondo</h1>
-    <p class="hero-bio">
-      <strong>Final Year Civil Engineering Student</strong> @ University of Cape Town.<br>
-      Highly motivated to work as a civil consulting engineer after graduation.
-    </p>
+    <p class="hero-description">Honours student in <strong>Civil Engineering</strong> at the University of Cape Town.<br>
+      Highly motivated to pursue a career as a consultant, applying academic knowledge to real-world infrastructure projects.</p>
 
     <div class="links-row">
-      <!-- <a class="link-pill link-pill--cv" href="docs/cv.pdf" target="_blank" rel="noopener">CV</a> -->
-      <a class="link-pill link-pill--cv" href="docs/CV_SiphamandlaMasondo.docx" target="_blank" rel="noopener">CV</a>
-      <!-- <a class="link-pill" href="https://www.linkedin.com/in/banele-mdluli/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="link-pill" href="https://github.com/mdlban010" target="_blank" rel="noopener">GitHub</a> -->
+      <a class="link-pill link-pill--cv" href="docs/CV_SiphamandlaMasondo.pdf" target="_blank" rel="noopener">CV</a>
       <a class="link-pill link-pill--linkedin" href="https://www.linkedin.com/in/siphamandla-masondo-b76402388/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="link-pill link-pill--github" href="https://github.com/mdlban010" target="_blank" rel="noopener">GitHub</a>
-      <a class="link-pill link-pill--email" href="mailto:austinbanele64@gmail.com">Email</a>
+      <!-- <a class="link-pill link-pill--github" href="https://github.com/mdlban010" target="_blank" rel="noopener">GitHub</a> -->
+      <a class="link-pill link-pill--email" href="mailto:sphamasondo04@gmail.com">Email</a>
     </div>
   </section>
 </main>
@@ -46,5 +44,20 @@
   <p>© 2026 Siphamandla Masondo</p>
 </footer>
 
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const storedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+  const root = document.documentElement;
+  const applyTheme = selected => {
+    root.dataset.theme = selected;
+    themeToggle.classList.toggle('theme-dark', selected === 'dark');
+    themeToggle.classList.toggle('theme-light', selected === 'light');
+    localStorage.setItem('theme', selected);
+  };
+  applyTheme(theme);
+  themeToggle.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+</script>
 </body>
 </html>

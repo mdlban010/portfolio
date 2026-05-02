@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog | Banele</title>
+<title>Blog | Siphamandla Masondo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -17,6 +17,9 @@
     <li><a href="career.html">Career</a></li>
     <li><a href="blog.html" class="active">Blog</a></li>
   </ul>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="link-pill link-pill--theme" type="button" aria-label="Toggle theme"></button>
+  </div>
 </nav>
 
 <main>
@@ -75,8 +78,24 @@
 </main>
 
 <footer>
-  <p>© 2026 Banele</p>
+  <p>© 2026 Siphamandla Masondo</p>
 </footer>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const storedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+  const root = document.documentElement;
+  const applyTheme = selected => {
+    root.dataset.theme = selected;
+    themeToggle.classList.toggle('theme-dark', selected === 'dark');
+    themeToggle.classList.toggle('theme-light', selected === 'light');
+    localStorage.setItem('theme', selected);
+  };
+  applyTheme(theme);
+  themeToggle.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+</script>
 
 </body>
 </html>
